@@ -54,6 +54,7 @@ require('sonarlint').setup({
   }
 })
 require("nvim-dap-virtual-text").setup()
+require("avante_lib").load()
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
