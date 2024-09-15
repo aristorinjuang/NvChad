@@ -5,7 +5,7 @@ local lspconfig = require "lspconfig"
 local configs = require "lspconfig/configs"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "gopls", "lua_ls", "intelephense", "eslint", "tsserver" }
+local servers = { "html", "cssls", "gopls", "lua_ls", "intelephense", "eslint", "ts_ls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -18,7 +18,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- configuring single server, example: typescript
--- lspconfig.tsserver.setup {
+-- lspconfig.ts_ls.setup {
 --   on_attach = nvlsp.on_attach,
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
