@@ -55,6 +55,9 @@ require('sonarlint').setup({
 })
 require("nvim-dap-virtual-text").setup()
 require("avante_lib").load()
+require("render-markdown").setup {
+  latex = { enabled = false }
+}
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
