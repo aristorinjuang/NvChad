@@ -103,5 +103,10 @@ return {
       file_types = { "markdown", "Avante" },
     },
     ft = { "markdown", "Avante" },
+  },
+
+  {
+    "echasnovski/mini.nvim",
+    version = false
   }
 }
