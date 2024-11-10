@@ -35,10 +35,6 @@ return {
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
 
-  -- {
-  --   "https://gitlab.com/schrieveslaach/sonarlint.nvim"
-  -- },
-
   {
     "rcarriga/nvim-dap-ui",
     dependencies = {
@@ -96,6 +92,7 @@ return {
       },
     },
   },
+
 
   {
     "echasnovski/mini.nvim",
