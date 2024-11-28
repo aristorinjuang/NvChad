@@ -55,7 +55,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- Set up an autocmd for PHP files to use 4-space indentation
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "php",
+  pattern = {
+    "php",
+    "java"
+  },
   callback = function()
     vim.bo.tabstop = 4
     vim.bo.shiftwidth = 4
