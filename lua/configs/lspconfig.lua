@@ -53,3 +53,15 @@ lspconfig.golangci_lint_ls.setup {
   root_dir = golangci_config.root_dir,
   init_options = golangci_config.init_options
 }
+
+lspconfig.volar.setup {
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+  init_options = {
+    vue = {
+      hybridMode = false
+    },
+    typescript = {
+      tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib"
+    }
+  }
+}

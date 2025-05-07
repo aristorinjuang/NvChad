@@ -16,15 +16,24 @@ return {
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter",
+  	opts = {
+  	  ensure_installed = {
+        "c", "comment", "css",
+        "go", "gomod", "gosum", "gotmpl", "gowork", "groovy",
+        "html",
+        "java", "javascript", "json",
+        "lua", "luadoc",
+        "markdown", "markdown_inline",
+        "printf", "python",
+        "query",
+        "sql",
+        "typescript",
+        "vim", "vimdoc", "vue"
+  		},
+    },
+  },
 
   {
     "ray-x/go.nvim",
@@ -113,6 +122,49 @@ return {
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "sonarlint-language-server",
+        "golangci-lint",
+        "tailwindcss-language-server",
+        "google-java-format",
+        "angular-language-server",
+        "stylua",
+        "stylelint",
+        "pylint",
+        "golangci-lint-langserver",
+        "goimports",
+        "php-debug-adapter",
+        "js-debug-adapter",
+        "vue-language-server",
+        "checkstyle",
+        "css-lsp",
+        "debugpy",
+        "djlint",
+        "eslint-lsp",
+        "eslint_d",
+        "go-debug-adapter",
+        "gofumpt",
+        "gopls",
+        "html-lsp",
+        "htmlhint",
+        "intelephense",
+        "java-debug-adapter",
+        "jdtls",
+        "lua-language-server",
+        "luacheck",
+        "phpcbf",
+        "phpcs",
+        "prettier",
+        "pyink",
+        "python-lsp-server",
+        "typescript-language-server"
       },
     },
   }
