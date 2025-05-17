@@ -26,7 +26,7 @@ return {
         "java", "javascript", "json",
         "lua", "luadoc",
         "markdown", "markdown_inline",
-        "printf", "python",
+        "php", "phpdoc", "printf", "python",
         "query",
         "sql",
         "typescript",
