@@ -20,6 +20,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
   	opts = {
   	  ensure_installed = {
+        "blade",
         "c", "comment", "css",
         "go", "gomod", "gosum", "gotmpl", "gowork", "groovy",
         "html",
