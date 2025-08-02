@@ -11,7 +11,6 @@ local servers = {
   "lua_ls",
   "intelephense",
   "eslint",
-  "ts_ls",
   "tailwindcss",
   "pylsp",
   "angularls"
@@ -35,6 +34,7 @@ end
 -- }
 
 
+-- golangci-lint configs
 local golangci_config = {
   cmd = {'golangci-lint-langserver'},
   filetypes = { 'go', 'gomod' },
@@ -54,14 +54,27 @@ lspconfig.golangci_lint_ls.setup {
   init_options = golangci_config.init_options
 }
 
+-- Vue.js support with Volar
 lspconfig.volar.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "vue" },
+}
+
+-- TypeScript support including Vue files
+lspconfig.ts_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
   filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
   init_options = {
-    vue = {
-      hybridMode = false
+    plugins = {
+      {
+        name = "@vue/typescript-plugin",
+        location = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+        languages = { "vue" },
+      },
     },
-    typescript = {
-      tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib"
-    }
-  }
+  },
 }
