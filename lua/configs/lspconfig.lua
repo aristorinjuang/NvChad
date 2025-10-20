@@ -1,8 +1,5 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local lspconfig = require "lspconfig"
-local configs = require "lspconfig/configs"
-
 -- EXAMPLE
 local servers = {
   "html",
@@ -17,53 +14,48 @@ local servers = {
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 
--- lsps with default config
+-- lsps with default config using new vim.lsp.config API
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  vim.lsp.config[lsp] = {
     on_attach = nvlsp.on_attach,
     on_init = nvlsp.on_init,
     capabilities = nvlsp.capabilities,
   }
+  vim.lsp.enable(lsp)
 end
 
 -- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
+-- vim.lsp.config.ts_ls = {
 --   on_attach = nvlsp.on_attach,
 --   on_init = nvlsp.on_init,
 --   capabilities = nvlsp.capabilities,
 -- }
+-- vim.lsp.enable('ts_ls')
 
-
--- golangci-lint configs
-local golangci_config = {
+-- golangci-lint language server
+vim.lsp.config.golangci_lint_ls = {
   cmd = {'golangci-lint-langserver'},
   filetypes = { 'go', 'gomod' },
-  root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+  root_dir = function(fname)
+    return vim.fs.root(fname, {'.git', 'go.mod'})
+  end,
   init_options = {
     command = { "golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false" };
   }
-};
-if not configs.golangcilsp then
-  configs.golangcilsp = {
-    default_config = golangci_config
-  }
-end
-lspconfig.golangci_lint_ls.setup {
-  filetypes = golangci_config.filetypes,
-  root_dir = golangci_config.root_dir,
-  init_options = golangci_config.init_options
 }
+vim.lsp.enable('golangci_lint_ls')
 
--- Vue.js support with Volar
-lspconfig.volar.setup {
+-- Vue.js support with vue_ls (formerly volar)
+vim.lsp.config.vue_ls = {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   filetypes = { "vue" },
 }
+vim.lsp.enable('vue_ls')
 
 -- TypeScript support including Vue files
-lspconfig.ts_ls.setup {
+vim.lsp.config.ts_ls = {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
@@ -78,3 +70,4 @@ lspconfig.ts_ls.setup {
     },
   },
 }
+vim.lsp.enable('ts_ls')
