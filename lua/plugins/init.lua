@@ -168,5 +168,17 @@ return {
         "typescript-language-server"
       },
     },
+  },
+
+  {
+    "Maduki-tech/nvim-plantuml",
+    lazy = false,
+    config = function()
+        require('plantuml').setup({
+            output_dir = '/tmp',
+            view = 'open',
+            auto_refresh = true
+        })
+    end
   }
 }
