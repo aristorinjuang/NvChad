@@ -171,14 +171,6 @@ return {
   },
 
   {
-    "Maduki-tech/nvim-plantuml",
-    lazy = false,
-    config = function()
-        require('plantuml').setup({
-            output_dir = '/tmp',
-            view = 'open',
-            auto_refresh = true
-        })
-    end
+    "Maduki-tech/nvim-plantuml"
   }
 }
