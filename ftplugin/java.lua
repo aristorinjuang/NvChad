@@ -18,6 +18,7 @@ require("jdtls").start_or_attach({
     "java",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
+    "-Dosgi.checkConfiguration=true",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
